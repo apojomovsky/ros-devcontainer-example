@@ -1,0 +1,42 @@
+# Ignore build and install folders
+build/
+devel/
+install/
+
+# Ignore IDE and editor files
+.vscode/
+*.swp
+*.swo
+*.swn
+*.bak
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+
+# Ignore Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore C++ object files
+*.o
+*.a
+*.so
+
+# Ignore C++ compiled files
+*.cmake
+CMakeCache.txt
+CMakeFiles/
+
+# Ignore ROS log files
+_ros_log/
+
+# Ignore catkin_tools related files
+.catkin_tools/
+
+# Ignore package-lock files
+package-lock.json
+
+# Ignore toplevel CMakeLists
+src/CMakeLists.txt
