@@ -40,3 +40,6 @@ package-lock.json
 
 # Ignore toplevel CMakeLists
 src/CMakeLists.txt
+
+# Ignore all subdirectories within /src
+src/*/
