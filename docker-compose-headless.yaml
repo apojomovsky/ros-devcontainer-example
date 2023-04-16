@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  ros_noetic:
+    build: .
+    container_name: ros-noetic-dev
+    volumes:
+      - ./src:/home/dev/ros_ws/src
+    networks:
+      - ros_network
+    command: "sleep infinity"
+    privileged: true
+
+networks:
+  ros_network:
+    driver: bridge
