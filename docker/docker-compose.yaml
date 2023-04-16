@@ -1,9 +1,19 @@
 version: '3.9'
 
 services:
-  ros_noetic:
+  ros_noetic_headless:
     build: .
-    container_name: ros-noetic-dev
+    container_name: ros-noetic-dev-headless
+    volumes:
+      - ./../src:/home/dev/ros_ws/src
+    networks:
+      - ros_network
+    command: "sleep infinity"
+    privileged: true
+
+  ros_noetic_nvidia:
+    build: .
+    container_name: ros-noetic-dev-nvidia
     runtime: nvidia
     environment:
       - DISPLAY=${DISPLAY}
@@ -12,7 +22,7 @@ services:
       - NVIDIA_DRIVER_CAPABILITIES=all
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      - ./src:/home/dev/ros_ws/src
+      - ./../src:/home/dev/ros_ws/src
     networks:
       - ros_network
     command: "sleep infinity"

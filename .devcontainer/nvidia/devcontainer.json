@@ -1,10 +1,9 @@
 {
-    "name": "ROS Noetic Dev Container",
+    "name": "ROS Noetic Dev Nvidia",
     "dockerComposeFile": [
-        "../docker-compose-nvidia.yaml",
-        "../docker-compose-headless.yaml"
+        "../../docker/docker-compose.yaml"
     ],
-    "service": "ros_noetic",
+    "service": "ros_noetic_nvidia",
     "workspaceFolder": "/home/dev/ros_ws",
     "customizations": {
         "vscode": {

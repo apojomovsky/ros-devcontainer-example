@@ -17,7 +17,7 @@ WORKDIR /home/dev
 
 # Create ros_ws/src directory and set ownership to dev user
 RUN mkdir -p /home/dev/ros_ws/src && \
-    chown -R dev:dev /home/dev/ros_ws
+    chown -R dev:dev /home/dev
 
 # Source the ROS environment in the user's bashrc
 RUN echo "source /opt/ros/noetic/setup.bash" >> /home/dev/.bashrc
