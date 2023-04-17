@@ -29,3 +29,8 @@ RUN mkdir -p /home/dev/ros_ws/src && \
 
 # Source the ROS environment in the user's bashrc
 RUN echo "source /opt/ros/noetic/setup.bash" >> /home/dev/.bashrc
+
+# Copy entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT [ "/entrypoint.sh" ]

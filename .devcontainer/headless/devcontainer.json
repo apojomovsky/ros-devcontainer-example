@@ -18,5 +18,6 @@
             ]
         }
     },
-    "remoteUser": "dev"
+    "remoteUser": "dev",
+    "overrideCommand": false
 }
