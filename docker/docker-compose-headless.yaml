@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  ros_noetic_headless:
+    build:
+      context: .
+      dockerfile: Dockerfile.headless
+    container_name: ros-noetic-dev-headless
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+      - "/dev/ttyUSB1:/dev/ttyUSB1"
+    volumes:
+      - ./../src:/home/dev/ros_ws/src
+    networks:
+      - ros_network
+    command: "sleep infinity"
+    privileged: true
+    entrypoint: "/entrypoint.sh"
+
+networks:
+  ros_network:
+    driver: bridge

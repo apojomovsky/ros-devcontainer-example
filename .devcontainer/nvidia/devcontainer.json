@@ -1,7 +1,7 @@
 {
     "name": "ROS Noetic Dev Nvidia",
     "dockerComposeFile": [
-        "../../docker/docker-compose.yaml"
+        "../../docker/docker-compose-nvidia.yaml"
     ],
     "service": "ros_noetic_nvidia",
     "workspaceFolder": "/home/dev/ros_ws",

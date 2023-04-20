@@ -1,7 +1,7 @@
 {
     "name": "ROS Noetic Dev Headless",
     "dockerComposeFile": [
-        "../../docker/docker-compose.yaml"
+        "../../docker/docker-compose-headless.yaml"
     ],
     "service": "ros_noetic_headless",
     "workspaceFolder": "/home/dev/ros_ws",
