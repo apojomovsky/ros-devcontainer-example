@@ -15,6 +15,7 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ./../src:/home/dev/ros_ws/src
+      - /home/$USER/.ssh:/home/dev/.ssh
     networks:
       - ros_network
     command: "sleep infinity"

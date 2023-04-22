@@ -11,6 +11,7 @@ services:
       - "/dev/ttyUSB1:/dev/ttyUSB1"
     volumes:
       - ./../src:/home/dev/ros_ws/src
+      - /home/$USER/.ssh:/home/dev/.ssh
     networks:
       - ros_network
     command: "sleep infinity"

@@ -1,4 +1,4 @@
-FROM ros:noetic
+FROM osrf/ros:noetic
 
 # Install apt packages and run rosdep update
 RUN apt-get update && \
