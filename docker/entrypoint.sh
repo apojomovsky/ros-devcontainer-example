@@ -8,10 +8,11 @@
 source /opt/ros/noetic/setup.bash
 
 # Update rosdep dependencies
-sudo apt update && rosdep update
+sudo apt update
+rosdep init && rosdep fix-permissions && rosdep update
 
 # Install project dependencies
-cd /home/dev/ros_ws/ && yes | rosdep install --from-paths src --ignore-src
+cd /home/dev/ros_ws/ && rosdep install -y --ignore-src --from-paths src
 
 # Execute any arguments passed to this script
 exec "$@"
