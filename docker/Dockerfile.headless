@@ -1,6 +1,6 @@
 FROM osrf/ros:noetic
 
-# Install apt packages and run rosdep update
+# Install sudo
 RUN apt-get update && \
     apt-get install -y \
         sudo && \
@@ -20,6 +20,17 @@ RUN echo "dev ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/dev && \
 # Switch to the 'dev' user
 USER dev
 
+# Create a temporary directory for the source code and dependencies
+WORKDIR /tmp/src
+
+# Copy the src directory containing the submodules
+COPY src .
+
+# Update rosdep and install dependencies, then remove submodules' directory
+RUN sudo apt update && rosdep update \
+    && rosdep install --from-paths . --ignore-src -y \
+    && sudo rm -rf /tmp/src
+
 # Set the working directory
 WORKDIR /home/dev
 
@@ -31,6 +42,6 @@ RUN mkdir -p /home/dev/ros_ws/src && \
 RUN echo "source /opt/ros/noetic/setup.bash" >> /home/dev/.bashrc
 
 # Copy entrypoint script
-COPY entrypoint.sh /entrypoint.sh
+COPY docker/entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]

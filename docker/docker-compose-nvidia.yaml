@@ -3,8 +3,8 @@ version: '3.9'
 services:
   ros_noetic_nvidia:
     build:
-      context: .
-      dockerfile: Dockerfile.nvidia
+      context: ..
+      dockerfile: docker/Dockerfile.nvidia
     container_name: ros-noetic-dev-nvidia
     runtime: nvidia
     environment:
@@ -13,19 +13,24 @@ services:
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=all
     volumes:
+      # Graphics related
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      - ./../src:/home/dev/ros_ws/src
+      # Mounts ssh credentials from host
       - /home/$USER/.ssh:/home/dev/.ssh
+      # Mounts src directory within a ros workspace
+      - ./../src:/home/dev/ros_ws/src
     networks:
       - ros_network
     command: "sleep infinity"
     privileged: true
     entrypoint: "/entrypoint.sh"
     devices:
+      # GPU related
       - "/dev/nvidia0:/dev/nvidia0"
       - "/dev/nvidiactl:/dev/nvidiactl"
       - "/dev/nvidia-uvm:/dev/nvidia-uvm"
       - "/dev/nvidia-uvm-tools:/dev/nvidia-uvm-tools"
+      # UART related
       - "/dev/ttyUSB0:/dev/ttyUSB0"
       - "/dev/ttyUSB1:/dev/ttyUSB1"
 

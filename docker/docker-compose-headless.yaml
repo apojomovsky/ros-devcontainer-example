@@ -3,15 +3,17 @@ version: '3.9'
 services:
   ros_noetic_headless:
     build:
-      context: .
-      dockerfile: Dockerfile.headless
+      context: ..
+      dockerfile: docker/Dockerfile.nvidia
     container_name: ros-noetic-dev-headless
     devices:
       - "/dev/ttyUSB0:/dev/ttyUSB0"
       - "/dev/ttyUSB1:/dev/ttyUSB1"
     volumes:
-      - ./../src:/home/dev/ros_ws/src
+      # Mounts ssh credentials from host
       - /home/$USER/.ssh:/home/dev/.ssh
+      # Mounts src directory within a ros workspace
+      - ./../src:/home/dev/ros_ws/src
     networks:
       - ros_network
     command: "sleep infinity"
